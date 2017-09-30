@@ -28,10 +28,13 @@ module.exports = IncidentService = {
                 incidentStatusId: incident.incidentStatusId,
                 dogId: incident.dogId,
                 requestingPartyId: incident.requestingPartyId,
-                message: message
+                message: incident.message
             }).then(() => {
+                console.log('resolved');
                 resolve();
             }).catch((err) => {
+                console.log('err');
+                console.log(err);
                 reject(err);
             });
         });
