@@ -12,6 +12,10 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.TEXT,
             field: 'name'
         },
+        profileUrl: {
+            type: DataTypes.TEXT,
+            field: 'profile_url'
+        },
         weight: {
             type: DataTypes.INTEGER,
             field: 'weight'
