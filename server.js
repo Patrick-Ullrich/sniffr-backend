@@ -13,17 +13,17 @@ const tunnel = require('tunnel-ssh');
 const app = express();
 const port = process.env.PORT || 3000;
 
-const config = {
-  username: 'root',
-  host: '138.197.164.167',
-  port: 22,
-  dstHost: '127.0.0.1',
-  dstPort: 3306,
-  localHost: '127.0.0.1',
-  localPort: 3306,
-  privateKey: fs.readFileSync("/Users/patrickullrich/.ssh/id_rsa"),
-  passphrase: 'hungryhungryhippo'
-};
+// const config = {
+//   username: 'root',
+//   host: '138.197.164.167',
+//   port: 22,
+//   dstHost: '127.0.0.1',
+//   dstPort: 3306,
+//   localHost: '127.0.0.1',
+//   localPort: 3306,
+//   privateKey: fs.readFileSync("/Users/patrickullrich/.ssh/id_rsa"),
+//   passphrase: 'hungryhungryhippo'
+// };
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -40,12 +40,12 @@ app.get('/*', (req, res, next) => {
   res.sendFile(path.join(__dirname + '/index.html'));
 });
 
-tunnel(config, function (error, server) {
-  models.sequelize.sync().then(() => {
-    initSeed();
-    app.listen(port);
-  });
+//tunnel(config, function (error, server) {
+models.sequelize.sync().then(() => {
+  initSeed();
+  app.listen(port);
 });
+// });
 
 function initSeed() {
   if (process.env.SEED) {
