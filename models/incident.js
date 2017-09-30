@@ -27,6 +27,10 @@ module.exports = function (sequelize, DataTypes) {
         requestingPartyId: {
             type: DataTypes.INTEGER,
             field: "requesting_party_id"
+        },
+        message: {
+            type: DataTypes.TEXT,
+            field: 'message'
         }
     }, {
         underscored: true,

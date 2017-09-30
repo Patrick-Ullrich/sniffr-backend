@@ -31,13 +31,13 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 app.use(cookieParser());
-app.use('/', express.static(__dirname + '/'));
+app.use('/', express.static(__dirname + '/dist'));
 
 //  Connect all our routes to our application
 app.use(boom());
 app.use('/', routes);
 app.get('/*', (req, res, next) => {
-  res.sendFile(path.join(__dirname + '/index.html'));
+  res.sendFile(path.join(__dirname + 'dist/index.html'));
 });
 
 //tunnel(config, function (error, server) {

@@ -27,7 +27,8 @@ module.exports = IncidentService = {
                 incidentTypeId: incident.incidentTypeId,
                 incidentStatusId: incident.incidentStatusId,
                 dogId: incident.dogId,
-                requestingPartyId: incident.requestingPartyId
+                requestingPartyId: incident.requestingPartyId,
+                message: message
             }).then(() => {
                 resolve();
             }).catch((err) => {
@@ -42,7 +43,8 @@ module.exports = IncidentService = {
                 incidentTypeId: incident.incidentTypeId,
                 incidentStatusId: incident.incidentStatusId,
                 dogId: incident.dogId,
-                requestingPartyId: incident.requestingPartyId
+                requestingPartyId: incident.requestingPartyId,
+                message: message
             }, {
                 where: {
                     incident_id: incidentId
