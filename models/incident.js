@@ -38,23 +38,23 @@ module.exports = function (sequelize, DataTypes) {
         version: true
     });
 
-    Incident.associate = models => {
-        Incident.belongsTo(models.SeverityType, {
-            foreignKey: 'severity_type_id'
-        });
-        Incident.belongsTo(models.IncidentType, {
-            foreignKey: 'incident_type_id'
-        });
-        Incident.belongsTo(models.User, {
-            foreignKey: 'requesting_party_id'
-        });
-        Incident.belongsTo(models.Dog, {
-            foreignKey: 'dog_id'
-        });
-        Incident.belongsTo(models.IncidentStatus, {
-            foreignKey: 'incident_status_id'
-        });
-    }
+    // Incident.associate = models => {
+    //     Incident.belongsTo(models.SeverityType, {
+    //         foreignKey: 'severity_type_id'
+    //     });
+    //     Incident.belongsTo(models.IncidentType, {
+    //         foreignKey: 'incident_type_id'
+    //     });
+    //     Incident.belongsTo(models.User, {
+    //         foreignKey: 'requesting_party_id'
+    //     });
+    //     Incident.belongsTo(models.Dog, {
+    //         foreignKey: 'dog_id'
+    //     });
+    //     Incident.belongsTo(models.IncidentStatus, {
+    //         foreignKey: 'incident_status_id'
+    //     });
+    // }
 
     return Incident;
 };

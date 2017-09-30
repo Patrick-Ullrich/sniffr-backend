@@ -22,11 +22,11 @@ module.exports = function (sequelize, DataTypes) {
         version: true
     });
 
-    House.associate = models => {
-        House.belongsTo(models.HouseType, {
-            foreignKey: 'house_type_id'
-        });
-    }
+    // House.associate = models => {
+    //     House.belongsTo(models.HouseType, {
+    //         foreignKey: 'house_type_id'
+    //     });
+    // }
 
     return House;
 };

@@ -29,7 +29,9 @@ module.exports = DogService = {
                 age: dog.age,
                 careGiverId: dog.careGiverId,
                 dogTypeId: dog.dogTypeId,
-                adoptionStatus: dog.adoptionStatus
+                adoptionStatus: dog.adoptionStatus,
+                profileUrl: dog.profileUrl,
+                about: dog.about
             }).then(() => {
                 resolve();
             }).catch((err) => {
@@ -46,7 +48,9 @@ module.exports = DogService = {
                 age: dog.age,
                 careGiverId: dog.careGiverId,
                 dogTypeId: dog.dogTypeId,
-                adoptionStatus: dog.adoptionStatus
+                adoptionStatus: dog.adoptionStatus,
+                profileUrl: dog.profileUrl,
+                about: dog.about
             }, {
                 where: {
                     dog_id: dogId

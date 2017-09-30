@@ -26,14 +26,14 @@ module.exports = function (sequelize, DataTypes) {
         version: true
     });
 
-    MedicalInfo.associate = models => {
-        MedicalInfo.belongsTo(models.MedicalInfoType, {
-            foreignKey: 'medical_info_type_id'
-        });
-        MedicalInfo.belongsTo(models.Dog, {
-            foreignKey: 'dog_id'
-        });
-    }
+    // MedicalInfo.associate = models => {
+    //     MedicalInfo.belongsTo(models.MedicalInfoType, {
+    //         foreignKey: 'medical_info_type_id'
+    //     });
+    //     MedicalInfo.belongsTo(models.Dog, {
+    //         foreignKey: 'dog_id'
+    //     });
+    // }
 
     return MedicalInfo;
 };

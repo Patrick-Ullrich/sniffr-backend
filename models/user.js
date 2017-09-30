@@ -38,20 +38,20 @@ module.exports = function (sequelize, DataTypes) {
         version: true
     });
 
-    User.associate = models => {
-        User.belongsTo(models.Address, {
-            foreignKey: 'address_id'
-        });
-        User.belongsTo(models.Phone, {
-            foreignKey: 'phone_id'
-        });
-        User.belongsTo(models.UserType, {
-            foreignKey: 'user_type_id'
-        });
-        User.belongsTo(models.House, {
-            foreignKey: 'house_id'
-        });
-    }
+    // User.associate = models => {
+    //     User.belongsTo(models.Address, {
+    //         foreignKey: 'address_id'
+    //     });
+    //     User.belongsTo(models.Phone, {
+    //         foreignKey: 'phone_id'
+    //     });
+    //     User.belongsTo(models.UserType, {
+    //         foreignKey: 'user_type_id'
+    //     });
+    //     User.belongsTo(models.House, {
+    //         foreignKey: 'house_id'
+    //     });
+    // }
 
     return User;
 };

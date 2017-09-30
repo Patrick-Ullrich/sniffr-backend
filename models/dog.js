@@ -12,6 +12,10 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.TEXT,
             field: 'name'
         },
+        about: {
+            type: DataTypes.TEXT,
+            field: 'about'
+        },
         profileUrl: {
             type: DataTypes.TEXT,
             field: 'profile_url'
@@ -46,17 +50,17 @@ module.exports = function (sequelize, DataTypes) {
         version: true
     });
 
-    Dog.associate = models => {
-        Dog.belongsTo(models.User, {
-            foreignKey: 'care_giver_id'
-        });
-        Dog.belongsTo(models.DogType, {
-            foreignKey: 'dog_type_id'
-        });
-        Dog.belongsTo(models.AdoptionStatus, {
-            foreignKey: 'adoption_status'
-        });
-    }
+    // Dog.associate = models => {
+    //     Dog.belongsTo(models.User, {
+    //         foreignKey: 'care_giver_id'
+    //     });
+    //     Dog.belongsTo(models.DogType, {
+    //         foreignKey: 'dog_type_id'
+    //     });
+    //     Dog.belongsTo(models.AdoptionStatus, {
+    //         foreignKey: 'adoption_status'
+    //     });
+    // }
 
     return Dog;
 };
