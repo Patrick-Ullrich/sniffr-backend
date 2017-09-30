@@ -1,0 +1,51 @@
+<!-- <div class="panel panel-default profile-area">
+    <div class="panel-heading">
+        <h3>Profile</h3>
+    </div>
+    <div class="panel-body">
+        <div>
+            <pre>{{vm.data}}</pre>
+        </div>
+        <img ng-src="{{ vm.profile.picture }}" class="avatar" alt="avatar">
+        <div>
+            <label><i class="glyphicon glyphicon-user"></i> Nickname</label>
+            <h3 class="nickname">{{ vm.profile.nickname }}</h3>
+        </div>
+        <pre class="full-profile">{{ vm.profile | json }}</pre>
+    </div>
+</div> -->
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>Chat</h3>
+    </div>
+    <div class="panel-body">
+        <form class="chat">
+            <span></span>
+            <div class="messages" id="collabthread">
+                <div class="message" ng-repeat="m in vm.messages">
+                    <div ng-class="(m.direction==1) ? 'in': 'out'">
+                        <span ng-show="m.direction==1" class="initial">{{m.from | acronym }}</span>
+                        <p>{{m.txt}}</p>
+                        <date><b>{{m.from || 'Me'}}</b> {{m.date | date:"MM/dd 'at' h:mma"}}</date>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="panel-footer">
+        <!-- <ul>
+            <li ng-repeat="message in vm.messages">
+                <!-- edit a message -->
+        <input ng-model="message.text" ng-change="messages.$save(message)" />
+        <!-- delete a message -->
+        <button ng-click="messages.$remove(message)">Delete Message</button>
+        </li>
+        </ul> -->
+        <!-- push a new message onto the array -->
+        <!-- <form ng-submit="addMessage()">
+            <input ng-model="newMessageText" />
+            <button type="submit">Add Message</button>
+        </form> -->
+    </div>
+</div>

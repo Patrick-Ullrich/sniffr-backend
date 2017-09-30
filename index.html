@@ -1,0 +1,61 @@
+<html>
+
+<head>
+    <title>Sniffr</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' />
+    <link rel='stylesheet' href="/assets/chat-style.css" />
+</head>
+
+<body>
+    <div ng-app="app">
+
+        <navbar></navbar>
+
+        <div class="container">
+            <ui-view></ui-view>
+        </div>
+
+    </div>
+
+    <script type="text/javascript" src="auth0-variables.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+    <script src="node_modules/angular-moment/angular-moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-animate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-touch.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.js"></script>
+    <script src="https://cdn.auth0.com/js/auth0/8.9/auth0.min.js"></script>
+    <script type="text/javascript" src="node_modules/angular-auth0/dist/angular-auth0.js"></script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+
+    <script>
+        // Initialize Firebase
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyCSKDxtdjIMqCJRiW0G1YCgHemZkyg6aXo",
+            authDomain: "rezqs-18f9c.firebaseapp.com",
+            databaseURL: "https://rezqs-18f9c.firebaseio.com",
+            projectId: "rezqs-18f9c",
+            storageBucket: "rezqs-18f9c.appspot.com",
+            messagingSenderId: "1036341124516"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script type="text/javascript" src="app/app.js"></script>
+    <script type="text/javascript" src="app/app.run.js"></script>
+    <script type="text/javascript" src="app/navbar/navbar.directive.js"></script>
+    <script type="text/javascript" src="app/home/home.controller.js"></script>
+    <script type="text/javascript" src="app/callback/callback.controller.js"></script>
+    <script type="text/javascript" src="app/profile/profile.controller.js"></script>
+    <script type="text/javascript" src="app/auth/auth.service.js"></script>
+</body>
+
+</html>
