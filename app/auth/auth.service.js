@@ -18,17 +18,17 @@
     }
 
     function syncUserList(sub, profileUrl, familyName, givenName) {
-      var ref = firebase.database().ref().child("users");
+      //var ref = firebase.database().ref().child("users");
       // create a synchronized array
-      userList = $firebaseArray(ref);
+      //userList = $firebaseArray(ref);
       // add new items to the array
       // the message is automatically added to our Firebase database!
-      userList.$add({
-        sub: sub,
-        profile_url: profileUrl,
-        family_name: familyName,
-        given_name: givenName
-      });
+      // userList.$add({
+      //   sub: sub,
+      //   profile_url: profileUrl,
+      //   family_name: familyName,
+      //   given_name: givenName
+      // });
     }
 
     function handleAuthentication() {
