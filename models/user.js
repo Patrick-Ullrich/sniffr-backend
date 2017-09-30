@@ -8,6 +8,14 @@ module.exports = function (sequelize, DataTypes) {
             autoIncrement: true,
             field: 'user_id'
         },
+        firstName: {
+            type: DataTypes.STRING,
+            field: 'first_name'
+        },
+        lastName: {
+            type: DataTypes.STRING,
+            field: 'last_name'
+        },
         userTypeId: {
             type: DataTypes.INTEGER,
             field: 'user_type_id'
