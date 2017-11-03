@@ -1,0 +1,121 @@
+@startuml UML
+class Address {
+    addressId : Integer
+    addressLine1 : String
+    postalCode : String
+    city : String
+}
+
+class AdoptionStatus {
+    adoptionStatusId : Integer
+    description : String
+}
+
+class Dog {
+    dogId : Integer
+    name : String
+    about : String
+    profileUrl : String
+    weight : Integer
+    height : Integer
+    age : Integer
+    careGiverId : Integer
+    dogTypeId : Integer
+    adoptionStatus : Integer
+}
+
+class DogType {
+    dogTypeId : Integer
+    description : String
+}
+
+class House {
+    houseId : Integer
+    squareFeed : Integer
+    houseTypeId : Integer
+}
+
+class HouseType {
+    houseTypeId : Integer
+    description : String
+}
+
+class Incident {
+    incidentId : Integer
+    severityTypeId : Integer
+    incidentTypeId : Integer
+    incidentStatusId : Integer
+    dogId : Integer
+    requestingPartyId : Integer
+    message : String
+}
+
+class IncidentStatus {
+    incidentStatusId : Integer
+    description : String
+}
+
+class IncidentType {
+    incidentTypeId : Integer
+    description : String
+}
+
+class MedicalInfo {
+    medicalInfoId : Integer
+    dogId : Integer
+    medicalInfoTypeId : Integer
+    info : String
+}
+
+class MedicalInfoType {
+    medicalInfoTypeId : Integer
+    description : String
+}
+
+class Phone {
+    phoneId : Interger
+    phoneNumber : String
+}
+
+class SeverityType {
+    severityTypeId : Interger
+    description : String
+}
+
+class User {
+    userId : Integer
+    firstName : String
+    lastName : String
+    userTypeId : Integer
+    addressId : Integer
+    phoneId : Integer
+    houseId : Integer
+}
+
+class UserType {
+    userTypeId : Integer
+    description : String
+}
+
+
+
+Incident "*" *-- "1" IncidentType
+Incident "*" *-- "1" IncidentStatus
+Incident "*" *-- "1" SeverityType
+Incident "*" --* "1" Dog
+
+Dog "1" *-- "*" DogType
+Dog "1" *-- "*" AdoptionStatus
+
+User "1" *-- "*" Dog
+User "*" *-- "1" UserType
+User "1" *-- "1" Address
+User "1" *-- "1" Phone
+User "1" *-- "1" House
+
+House "*" *-- "1" HouseType
+
+MedicalInfo "*" *-- "1" MedicalInfoType
+
+
+@enduml

@@ -1,15 +1,15 @@
 const Sequelize = require("sequelize");
-const express = require('express');
-const fs = require('fs');
-const path = require('path');
-const favicon = require('serve-favicon');
-const logger = require('morgan');
-const models = require('./models/');
-const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
-const routes = require('./routes');
-const boom = require('express-boom');
-const tunnel = require('tunnel-ssh');
+const express = require("express");
+const fs = require("fs");
+const path = require("path");
+const favicon = require("serve-favicon");
+const logger = require("morgan");
+const models = require("./models/");
+const cookieParser = require("cookie-parser");
+const bodyParser = require("body-parser");
+const routes = require("./routes");
+const boom = require("express-boom");
+const tunnel = require("tunnel-ssh");
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -25,19 +25,21 @@ const port = process.env.PORT || 3000;
 //   passphrase: 'hungryhungryhippo'
 // };
 
-app.use(logger('dev'));
+app.use(logger("dev"));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: false
-}));
+app.use(
+  bodyParser.urlencoded({
+    extended: false
+  })
+);
 app.use(cookieParser());
-app.use('/', express.static(__dirname + '/dist'));
+app.use("/", express.static(__dirname + "/dist"));
 
 //  Connect all our routes to our application
 app.use(boom());
-app.use('/', routes);
-app.get('/*', (req, res, next) => {
-  res.sendFile(path.join(__dirname + 'dist/index.html'));
+app.use("/", routes);
+app.get("/*", (req, res, next) => {
+  res.sendFile(path.join(__dirname + "/dist/index.html"));
 });
 
 //tunnel(config, function (error, server) {
@@ -49,126 +51,133 @@ models.sequelize.sync().then(() => {
 
 function initSeed() {
   if (process.env.SEED) {
-    models.AdoptionStatus.bulkCreate([{
+    models.AdoptionStatus.bulkCreate([
+      {
         adoptionStatusId: 1,
-        description: 'Pending'
+        description: "Pending"
       },
       {
         adoptionStatusId: 2,
-        description: 'Quarantine'
+        description: "Quarantine"
       },
       {
         adoptionStatusId: 3,
-        description: 'Ready for Adoption'
+        description: "Ready for Adoption"
       },
       {
         adoptionStatusId: 4,
-        description: 'Adopted'
+        description: "Adopted"
       }
     ]);
 
-    models.DogType.bulkCreate([{
+    models.DogType.bulkCreate([
+      {
         dogTypeId: 1,
-        description: 'German Shepherd'
+        description: "German Shepherd"
       },
       {
         dogTypeId: 2,
-        description: 'Rottweiler'
+        description: "Rottweiler"
       },
       {
         dogTypeId: 3,
-        description: 'Bulldog'
+        description: "Bulldog"
       }
     ]);
 
-    models.HouseType.bulkCreate([{
+    models.HouseType.bulkCreate([
+      {
         houseTypeId: 1,
-        description: 'Townhouse'
+        description: "Townhouse"
       },
       {
         houseTypeId: 2,
-        description: 'Bungalow'
+        description: "Bungalow"
       },
       {
         houseTypeId: 3,
-        description: 'Farm'
+        description: "Farm"
       }
     ]);
 
-    models.IncidentStatus.bulkCreate([{
+    models.IncidentStatus.bulkCreate([
+      {
         incidentStatusId: 1,
-        description: 'Open'
+        description: "Open"
       },
       {
         incidentStatusId: 2,
-        description: 'Closed'
+        description: "Closed"
       }
     ]);
 
-    models.IncidentType.bulkCreate([{
+    models.IncidentType.bulkCreate([
+      {
         incidentTypeId: 1,
-        description: 'Medical Issue'
+        description: "Medical Issue"
       },
       {
         incidentTypeId: 2,
-        description: 'Out of Supplies'
+        description: "Out of Supplies"
       },
       {
         incidentTypeId: 3,
-        description: 'General Question'
+        description: "General Question"
       }
     ]);
 
-    models.MedicalInfoType.bulkCreate([{
+    models.MedicalInfoType.bulkCreate([
+      {
         medicalInfoTypeId: 1,
-        description: 'Vaccination'
+        description: "Vaccination"
       },
       {
         medicalInfoTypeId: 2,
-        description: 'Neutering'
+        description: "Neutering"
       },
       {
         medicalInfoTypeId: 3,
-        description: 'Training'
+        description: "Training"
       }
     ]);
 
-    models.SeverityType.bulkCreate([{
+    models.SeverityType.bulkCreate([
+      {
         severityTypeId: 1,
-        description: '1 - Emergency'
+        description: "1 - Emergency"
       },
       {
         severityTypeId: 2,
-        description: '2 - High'
+        description: "2 - High"
       },
       {
         severityTypeId: 3,
-        description: '3 - Medium'
+        description: "3 - Medium"
       },
       {
         severityTypeId: 4,
-        description: '4 - Low'
+        description: "4 - Low"
       }
     ]);
 
-    models.UserType.bulkCreate([{
+    models.UserType.bulkCreate([
+      {
         userTypeId: 1,
-        description: 'Foster'
+        description: "Foster"
       },
       {
         userTypeId: 2,
-        description: 'Event Coordinator'
+        description: "Event Coordinator"
       },
       {
         userTypeId: 3,
-        description: 'Medical Coordinator'
+        description: "Medical Coordinator"
       },
       {
         userTypeId: 4,
-        description: 'Employee'
+        description: "Employee"
       }
     ]);
-
   }
 }
 
