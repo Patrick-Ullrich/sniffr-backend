@@ -35,6 +35,7 @@ module.exports = UserService = {
       models.User
         .create({
           firstName: user.firstName,
+          auth0Key: user.auth0Key,
           lastName: user.lastName,
           userTypeId: user.userTypeId,
           addressId: user.addressId,
