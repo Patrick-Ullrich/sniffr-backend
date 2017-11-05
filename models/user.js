@@ -10,6 +10,10 @@ module.exports = function(sequelize, DataTypes) {
         autoIncrement: true,
         field: "user_id"
       },
+      auth0Key: {
+        type: DataTypes.STRING,
+        field: "auth0_key"
+      },
       firstName: {
         type: DataTypes.STRING,
         field: "first_name"
