@@ -24,7 +24,8 @@ module.exports = function(sequelize, DataTypes) {
       },
       weight: {
         type: DataTypes.INTEGER,
-        field: "weight"
+        field: "weight",
+        isNumeric: true
       },
       height: {
         type: DataTypes.INTEGER,
