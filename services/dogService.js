@@ -65,13 +65,9 @@ module.exports = DogService = {
           }
         )
         .then(updateCount => {
-          console.log("SUCCESS");
-          console.log("Update Count: " + updateCount);
           resolve();
         })
         .catch(err => {
-          console.log("=======ERROR=======");
-          console.log(err);
           reject(err);
         });
     });
