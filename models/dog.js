@@ -25,15 +25,23 @@ module.exports = function(sequelize, DataTypes) {
       weight: {
         type: DataTypes.INTEGER,
         field: "weight",
-        isNumeric: true
+        validate: {
+          isNumeric: true
+        }
       },
       height: {
         type: DataTypes.INTEGER,
-        field: "height"
+        field: "height",
+        validate: {
+          isNumeric: true
+        }
       },
       age: {
         type: DataTypes.INTEGER,
-        field: "age"
+        field: "age",
+        validate: {
+          isNumeric: true
+        }
       },
       careGiverId: {
         type: DataTypes.INTEGER,
