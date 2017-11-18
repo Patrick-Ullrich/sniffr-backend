@@ -12,9 +12,15 @@ module.exports = UserService = {
           include: [models.Dog, models.Address, models.Phone, models.House]
         };
       }
-      models.User.findAll(where || {}).then(result => {
-        resolve(result);
-      });
+      models.User
+        .findAll(
+          where || {
+            include: [models.Dog, models.Address, models.Phone, models.House]
+          }
+        )
+        .then(result => {
+          resolve(result);
+        });
     });
   },
   findById: userId => {
@@ -23,7 +29,8 @@ module.exports = UserService = {
         .find({
           where: {
             user_id: userId
-          }
+          },
+          include: [models.Dog, models.Address, models.Phone, models.House]
         })
         .then(result => {
           resolve(result);
