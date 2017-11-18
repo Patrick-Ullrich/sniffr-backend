@@ -9,7 +9,7 @@ module.exports = UserService = {
           where: {
             userTypeId: params.userTypeId
           },
-          include: [models.Dog]
+          include: [models.Dog, models.Address, models.Phone, models.House]
         };
       }
       models.User.findAll(where || {}).then(result => {
