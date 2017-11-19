@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
         field: "name",
         validate: {
           len: {
-            args: [[2, 50]],
+            args: [2, 50],
             msg: "Name must be between 2 and 50 characters."
           }
         }
@@ -25,7 +25,7 @@ module.exports = function(sequelize, DataTypes) {
         field: "about",
         validate: {
           len: {
-            args: [[0, 140]],
+            args: [0, 140],
             msg: "About length cannot exceed 140 characters."
           }
         }
