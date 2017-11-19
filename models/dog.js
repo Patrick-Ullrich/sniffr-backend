@@ -14,14 +14,20 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.TEXT,
         field: "name",
         validate: {
-          len: [2, 50]
+          len: {
+            args: [[2, 50]],
+            msg: "Name must be between 2 and 50 characters."
+          }
         }
       },
       about: {
         type: DataTypes.TEXT,
         field: "about",
         validate: {
-          len: [0, 140]
+          len: {
+            args: [[0, 140]],
+            msg: "About length cannot exceed 140 characters."
+          }
         }
       },
       profileUrl: {
@@ -32,21 +38,54 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.INTEGER,
         field: "weight",
         validate: {
-          isNumeric: true
+          isNumeric: {
+            args: [true],
+            msg: "Weight must be numeric."
+          },
+          max: {
+            args: [999],
+            msg: "Weight cannot exceed 999 lb"
+          },
+          min: {
+            args: [0],
+            msg: "Weight must be equals or greater than 0."
+          }
         }
       },
       height: {
         type: DataTypes.INTEGER,
         field: "height",
         validate: {
-          isNumeric: true
+          isNumeric: {
+            args: [true],
+            msg: "Height must be numeric."
+          },
+          max: {
+            args: [500],
+            msg: "Height cannot exceed 500cm."
+          },
+          min: {
+            args: [0],
+            msg: "Height must be equals or greater than 0."
+          }
         }
       },
       age: {
         type: DataTypes.INTEGER,
         field: "age",
         validate: {
-          isNumeric: true
+          isNumeric: {
+            args: [true],
+            msg: "Age must be numeric."
+          },
+          max: {
+            args: [999],
+            msg: "Age cannot exceed 999 years."
+          },
+          min: {
+            args: [0],
+            msg: "Age must be equals or greater than 0."
+          }
         }
       },
       careGiverId: {
