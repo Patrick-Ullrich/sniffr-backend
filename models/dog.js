@@ -116,7 +116,7 @@ module.exports = function(sequelize, DataTypes) {
       foreignKey: "dogTypeId"
     });
     Dog.belongsTo(models.AdoptionStatus, {
-      foreignKey: "adoptionStatus"
+      foreignKey: { name: "adoptionStatus", allowNull: false }
     });
   };
 
