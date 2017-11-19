@@ -41,6 +41,8 @@ module.exports = PhoneService = {
       models.Phone
         .findOne({ where: { phone_id: phoneId } })
         .then(function(obj) {
+          console.log(obj);
+          console.log("done searching)");
           if (obj) {
             obj
               .update(phone)
@@ -60,6 +62,9 @@ module.exports = PhoneService = {
                 reject(err);
               });
           }
+        })
+        .catch(function(err) {
+          console.log("ERROR:" + err);
         });
     });
   },
