@@ -36,7 +36,6 @@ module.exports = PhoneService = {
     });
   },
   update: (phoneId, phone) => {
-    var that = this;
     return new Promise((resolve, reject) => {
       models.Phone
         .findOne({ where: { phone_id: phoneId } })
@@ -53,8 +52,7 @@ module.exports = PhoneService = {
                 reject(err);
               });
           } else {
-            that
-              .create(phone)
+            create(phone)
               .then(() => {
                 resolve();
               })
