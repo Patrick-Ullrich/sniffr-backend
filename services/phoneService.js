@@ -52,7 +52,7 @@ module.exports = PhoneService = {
                 reject(err);
               });
           } else {
-            create(phone)
+            PhoneService.create(phone)
               .then(() => {
                 resolve();
               })
