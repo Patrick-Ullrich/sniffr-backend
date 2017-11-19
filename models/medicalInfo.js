@@ -21,14 +21,11 @@ module.exports = function(sequelize, DataTypes) {
       info: {
         type: DataTypes.TEXT,
         field: "info",
+        allowNull: false,
         validate: {
           len: {
             args: [1, 50],
             msg: "Length must be between 1 and 50 characters."
-          },
-          notNull: {
-            args: [false],
-            msg: "Info text is required."
           }
         }
       }
