@@ -1,4 +1,7 @@
 const models = require("../models/");
+const addressService = require("./addressService");
+const houseService = require("./houseService");
+const phoneService = require("./phoneService");
 
 module.exports = UserService = {
   findAll: params => {
@@ -59,6 +62,9 @@ module.exports = UserService = {
   },
   update: (userId, user) => {
     return new Promise((resolve, reject) => {
+      phoneService.update(user.Phone);
+      addressService.update(user.Address);
+      houseService.update(user.House);
       models.User
         .update(
           {
