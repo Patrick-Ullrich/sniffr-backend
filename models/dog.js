@@ -12,11 +12,17 @@ module.exports = function(sequelize, DataTypes) {
       },
       name: {
         type: DataTypes.TEXT,
-        field: "name"
+        field: "name",
+        validate: {
+          len: [2, 50]
+        }
       },
       about: {
         type: DataTypes.TEXT,
-        field: "about"
+        field: "about",
+        validate: {
+          len: [0, 140]
+        }
       },
       profileUrl: {
         type: DataTypes.TEXT,
