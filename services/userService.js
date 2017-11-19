@@ -68,13 +68,14 @@ module.exports = UserService = {
       models.User
         .update(
           {
+            auth0Key: user.auth0Key,
             userTypeId: user.userTypeId,
             addressId: user.addressId,
             phoneId: user.phoneId,
             houseId: user.houseId,
             firstName: user.firstName,
             lastName: user.lastName,
-            house: user.House
+            House: user.House
           },
           {
             where: {
