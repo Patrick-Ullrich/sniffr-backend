@@ -20,7 +20,13 @@ module.exports = function(sequelize, DataTypes) {
       },
       info: {
         type: DataTypes.TEXT,
-        field: "info"
+        field: "info",
+        validate: {
+          len: {
+            args: [1, 50],
+            msg: "Info length cannot exceed 50 characters."
+          }
+        }
       }
     },
     {

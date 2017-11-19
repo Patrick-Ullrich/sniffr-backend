@@ -12,7 +12,21 @@ module.exports = function(sequelize, DataTypes) {
       },
       squareFeet: {
         type: DataTypes.INTEGER,
-        field: "square_feet"
+        field: "square_feet",
+        validate: {
+          isNumeric: {
+            args: [true],
+            msg: "Square Feet must be numeric."
+          },
+          min: {
+            args: [1],
+            msg: "Square Feet must be equals or greater than 1"
+          },
+          max: {
+            args: [999999],
+            msg: "Square Feet cannot exceed 999,999."
+          }
+        }
       },
       houseTypeId: {
         type: DataTypes.INTEGER,

@@ -16,11 +16,23 @@ module.exports = function(sequelize, DataTypes) {
       },
       firstName: {
         type: DataTypes.STRING,
-        field: "first_name"
+        field: "first_name",
+        validate: {
+          len: {
+            args: [2, 50],
+            msg: "First Name must be between 2 and 50 characters."
+          }
+        }
       },
       lastName: {
         type: DataTypes.STRING,
-        field: "last_name"
+        field: "last_name",
+        validate: {
+          len: {
+            args: [2, 50],
+            msg: "Last Name must be between 2 and 50 characters."
+          }
+        }
       },
       userTypeId: {
         type: DataTypes.INTEGER,

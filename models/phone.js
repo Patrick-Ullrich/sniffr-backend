@@ -12,7 +12,13 @@ module.exports = function(sequelize, DataTypes) {
       },
       phoneNumber: {
         type: DataTypes.TEXT,
-        field: "phone_number"
+        field: "phone_number",
+        validate: {
+          isNumeric: {
+            args: [true],
+            msg: "Phone Numbers must be numeric."
+          }
+        }
       }
     },
     {

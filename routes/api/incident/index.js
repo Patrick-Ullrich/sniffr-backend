@@ -27,6 +27,9 @@ router.post("/", (req, res) => {
     .catch(err => {
       if (err.name === "SequelizeValidationError") {
         res.boom.badRequest("Validation Error", err);
+      } else {
+        console.log(err);
+        res.boom.badImplementation(err);
       }
     });
 });
@@ -39,6 +42,9 @@ router.put("/:incident_id", (req, res) => {
     .catch(err => {
       if (err.name === "SequelizeValidationError") {
         res.boom.badRequest("Validation Error", err);
+      } else {
+        console.log(err);
+        res.boom.badImplementation(err);
       }
     });
 });
