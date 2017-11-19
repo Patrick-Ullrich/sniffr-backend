@@ -65,7 +65,9 @@ module.exports = UserService = {
             userTypeId: user.userTypeId,
             addressId: user.addressId,
             phoneId: user.phoneId,
-            houseId: user.houseId
+            houseId: user.houseId,
+            firstName: user.firstName,
+            lastName: user.lastName
           },
           {
             where: {
