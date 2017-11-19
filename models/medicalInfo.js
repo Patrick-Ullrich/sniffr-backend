@@ -24,7 +24,11 @@ module.exports = function(sequelize, DataTypes) {
         validate: {
           len: {
             args: [1, 50],
-            msg: "Info length cannot exceed 50 characters."
+            msg: "Length must be between 1 and 50 characters."
+          },
+          allowNull: {
+            args: [false],
+            msg: "Info text is required."
           }
         }
       }
