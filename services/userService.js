@@ -73,12 +73,14 @@ module.exports = UserService = {
             phoneId: user.phoneId,
             houseId: user.houseId,
             firstName: user.firstName,
-            lastName: user.lastName
+            lastName: user.lastName,
+            house: user.House
           },
           {
             where: {
               user_id: userId
-            }
+            },
+            include: [models.House]
           }
         )
         .then(updateCount => {
