@@ -26,7 +26,7 @@ module.exports = function(sequelize, DataTypes) {
             args: [1, 50],
             msg: "Length must be between 1 and 50 characters."
           },
-          allowNull: {
+          notNull: {
             args: [false],
             msg: "Info text is required."
           }
