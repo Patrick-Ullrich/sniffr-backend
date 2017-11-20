@@ -63,8 +63,8 @@ module.exports = UserService = {
   update: (userId, user) => {
     return new Promise((resolve, reject) => {
       phoneService.update(user.phoneId, user.Phone);
-      // addressService.update(user.Address);
-      // houseService.update(user.House);
+      addressService.update(user.addressId, user.Address);
+      houseService.update(user.houseId, user.House);
       models.User
         .update(
           {
