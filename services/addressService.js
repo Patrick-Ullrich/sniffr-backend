@@ -66,26 +66,6 @@ module.exports = AddressService = {
           console.log(err);
           reject(err);
         });
-
-      models.Address
-        .update(
-          {
-            addressLine1: address.addressLine1,
-            postalCode: address.postalCode,
-            city: address.city
-          },
-          {
-            where: {
-              address_id: addressId
-            }
-          }
-        )
-        .then(updateCount => {
-          resolve();
-        })
-        .catch(err => {
-          reject(err);
-        });
     });
   },
   delete: addressId => {

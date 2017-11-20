@@ -64,25 +64,6 @@ module.exports = HouseService = {
           console.log(err);
           reject(err);
         });
-
-      models.House
-        .update(
-          {
-            squareFeet: house.squareFeet,
-            houseTypeId: house.houseTypeId
-          },
-          {
-            where: {
-              houseId: houseId
-            }
-          }
-        )
-        .then(updateCount => {
-          resolve();
-        })
-        .catch(err => {
-          reject(err);
-        });
     });
   },
   delete: houseId => {
