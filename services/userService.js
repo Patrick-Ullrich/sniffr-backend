@@ -62,28 +62,49 @@ module.exports = UserService = {
   },
   update: (userId, user) => {
     return new Promise((resolve, reject) => {
-      phoneService.update(user.phoneId, user.Phone);
-      addressService.update(user.addressId, user.Address);
-      houseService.update(user.houseId, user.House);
-      models.User
-        .update(
-          {
-            auth0Key: user.auth0Key,
-            userTypeId: user.userTypeId,
-            addressId: user.addressId,
-            phoneId: user.phoneId,
-            houseId: user.houseId,
-            firstName: user.firstName,
-            lastName: user.lastName
-          },
-          {
-            where: {
-              user_id: userId
-            }
-          }
-        )
-        .then(updateCount => {
-          resolve();
+      phoneService
+        .update(user.phoneId, user.Phone)
+        .then(phone => {
+          addressService
+            .update(user.addressId, user.Address)
+            .then(address => {
+              houseService
+                .update(user.houseId, user.House)
+                .then(house => {
+                  models.User
+                    .update(
+                      {
+                        auth0Key: user.auth0Key,
+                        userTypeId: user.userTypeId,
+                        addressId: address.addressId,
+                        phoneId: phone.phoneId,
+                        houseId: house.houseId,
+                        firstName: user.firstName,
+                        lastName: user.lastName
+                      },
+                      {
+                        where: {
+                          user_id: userId
+                        }
+                      }
+                    )
+                    .then(updateCount => {
+                      resolve();
+                    })
+                    .catch(err => {
+                      reject(err);
+                    });
+                })
+                .catch(err => {
+                  addressService.delete(address.addressId);
+                  phoneService.delete(phone.deleteId);
+                  reject(err);
+                });
+            })
+            .catch(err => {
+              phoneService.delete(phone.deleteId);
+              reject(err);
+            });
         })
         .catch(err => {
           reject(err);

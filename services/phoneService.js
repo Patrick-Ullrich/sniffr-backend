@@ -44,15 +44,15 @@ module.exports = PhoneService = {
             obj
               .update(phone)
               .then(updateCount => {
-                resolve();
+                resolve(phone);
               })
               .catch(err => {
                 reject(err);
               });
           } else {
             PhoneService.create(phone)
-              .then(() => {
-                resolve();
+              .then(obj => {
+                resolve(obj);
               })
               .catch(err => {
                 reject(err);
