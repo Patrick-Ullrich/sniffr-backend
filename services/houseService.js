@@ -13,7 +13,7 @@ module.exports = HouseService = {
       models.House
         .find({
           where: {
-            house_id: houseId
+            houseId: houseId
           }
         })
         .then(result => {
@@ -73,7 +73,7 @@ module.exports = HouseService = {
           },
           {
             where: {
-              house_id: houseId
+              houseId: houseId
             }
           }
         )
@@ -90,7 +90,7 @@ module.exports = HouseService = {
       models.House
         .destroy({
           where: {
-            house_id: houseId
+            houseId: houseId
           }
         })
         .then(count => {

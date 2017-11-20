@@ -61,6 +61,7 @@ module.exports = AddressService = {
               })
               .catch(err => {
                 console.log("couldn't create address");
+                console.log(err);
                 reject(err);
               });
           }
