@@ -21,8 +21,8 @@ router.get("/:phone_id", (req, res) => {
 
 router.post("/", (req, res) => {
   PhoneService.create(req.body)
-    .then(() => {
-      res.status(201).json({});
+    .then(phone => {
+      res.status(201).json(phone);
     })
     .catch(err => {
       if (err.name === "SequelizeValidationError") {

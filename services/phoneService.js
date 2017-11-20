@@ -28,8 +28,7 @@ module.exports = PhoneService = {
           phoneNumber: phone.phoneNumber
         })
         .then(obj => {
-          console.log(obj);
-          resolve();
+          resolve(obj);
         })
         .catch(err => {
           reject(err);
