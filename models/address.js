@@ -22,7 +22,15 @@ module.exports = function(sequelize, DataTypes) {
       },
       postalCode: {
         type: DataTypes.TEXT,
-        field: "postal_code"
+        field: "postal_code",
+        validate: {
+          is: {
+            args: [
+              /^[ABCEGHJKLMNPRSTVXY]\d[ABCEGHJKLMNPRSTVWXYZ]( )?\d[ABCEGHJKLMNPRSTVWXYZ]\d$/i
+            ],
+            msg: "Postal Code is not in the correct format."
+          }
+        }
       },
       city: {
         type: DataTypes.TEXT,
