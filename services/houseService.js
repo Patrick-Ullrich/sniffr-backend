@@ -28,8 +28,8 @@ module.exports = HouseService = {
           squareFeet: house.squareFeet,
           houseTypeId: house.houseTypeId
         })
-        .then(() => {
-          resolve();
+        .then(obj => {
+          resolve(obj);
         })
         .catch(err => {
           reject(err);

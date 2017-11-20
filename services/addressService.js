@@ -29,8 +29,8 @@ module.exports = AddressService = {
           postalCode: address.postalCode,
           city: address.city
         })
-        .then(() => {
-          resolve();
+        .then(obj => {
+          resolve(obj);
         })
         .catch(err => {
           reject(err);
