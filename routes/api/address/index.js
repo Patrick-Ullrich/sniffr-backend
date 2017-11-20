@@ -21,8 +21,8 @@ router.get("/:address_id", (req, res) => {
 
 router.post("/", (req, res) => {
   AddressService.create(req.body)
-    .then(() => {
-      res.status(201).json({});
+    .then(address => {
+      res.status(201).json(address);
     })
     .catch(err => {
       if (err.name === "SequelizeValidationError") {

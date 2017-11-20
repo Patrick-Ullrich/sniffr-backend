@@ -21,8 +21,8 @@ router.get("/:house_id", (req, res) => {
 
 router.post("/", (req, res) => {
   HouseService.create(req.body)
-    .then(() => {
-      res.status(201).json({});
+    .then(house => {
+      res.status(201).json(house);
     })
     .catch(err => {
       if (err.name === "SequelizeValidationError") {
