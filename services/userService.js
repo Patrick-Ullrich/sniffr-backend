@@ -65,15 +65,15 @@ module.exports = UserService = {
       phoneService
         .update(user.phoneId, user.Phone)
         .then(phone => {
-          console.log("phone created");
+          console.log("phone created: " + phone);
           addressService
             .update(user.addressId, user.Address)
             .then(address => {
-              console.log("address created");
+              console.log("address created: " + address);
               houseService
                 .update(user.houseId, user.House)
                 .then(house => {
-                  console.log("house created");
+                  console.log("house created:" + house);
                   models.User
                     .update(
                       {
