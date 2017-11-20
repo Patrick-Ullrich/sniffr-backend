@@ -92,7 +92,8 @@ module.exports = UserService = {
                       }
                     )
                     .then(updateCount => {
-                      console.log("User created");
+                      console.log("User updated");
+                      resolve(UserService.findById(userId));
                       resolve();
                     })
                     .catch(err => {
