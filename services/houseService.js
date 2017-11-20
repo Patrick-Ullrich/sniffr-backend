@@ -52,8 +52,8 @@ module.exports = HouseService = {
               });
           } else {
             HouseService.create(house)
-              .then(() => {
-                resolve();
+              .then(obj => {
+                resolve(obj);
               })
               .catch(err => {
                 reject(err);

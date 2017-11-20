@@ -42,7 +42,6 @@ module.exports = AddressService = {
       models.Address
         .findOne({ where: { address_id: addressId } })
         .then(function(obj) {
-          console.log("ADDRESS");
           console.log(obj);
           if (obj) {
             obj
@@ -55,12 +54,10 @@ module.exports = AddressService = {
               });
           } else {
             AddressService.create(address)
-              .then(() => {
-                console.log("created address");
-                resolve();
+              .then(obj => {
+                resolve(obj);
               })
               .catch(err => {
-                console.log("couldn't create address");
                 console.log(err);
                 reject(err);
               });
