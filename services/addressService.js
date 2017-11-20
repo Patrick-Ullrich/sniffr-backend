@@ -42,12 +42,11 @@ module.exports = AddressService = {
       models.Address
         .findOne({ where: { address_id: addressId } })
         .then(function(obj) {
-          console.log(obj);
           if (obj) {
             obj
               .update(address)
               .then(updateCount => {
-                resolve();
+                resolve(address);
               })
               .catch(err => {
                 reject(err);

@@ -45,7 +45,7 @@ module.exports = HouseService = {
             obj
               .update(house)
               .then(updateCount => {
-                resolve();
+                resolve(house);
               })
               .catch(err => {
                 reject(err);
