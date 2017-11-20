@@ -65,12 +65,15 @@ module.exports = UserService = {
       phoneService
         .update(user.phoneId, user.Phone)
         .then(phone => {
+          console.log("phone created");
           addressService
             .update(user.addressId, user.Address)
             .then(address => {
+              console.log("address created");
               houseService
                 .update(user.houseId, user.House)
                 .then(house => {
+                  console.log("house created");
                   models.User
                     .update(
                       {
@@ -89,24 +92,29 @@ module.exports = UserService = {
                       }
                     )
                     .then(updateCount => {
+                      console.log("User created");
                       resolve();
                     })
                     .catch(err => {
+                      console.log("user failed" + err);
                       reject(err);
                     });
                 })
                 .catch(err => {
+                  console.log("house failed" + err);
                   addressService.delete(address.addressId);
                   phoneService.delete(phone.deleteId);
                   reject(err);
                 });
             })
             .catch(err => {
+              console.log("address failed" + err);
               phoneService.delete(phone.deleteId);
               reject(err);
             });
         })
         .catch(err => {
+          console.log("phone failed" + err);
           reject(err);
         });
     });
