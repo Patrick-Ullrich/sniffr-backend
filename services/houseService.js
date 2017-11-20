@@ -39,7 +39,7 @@ module.exports = HouseService = {
   update: (houseId, house) => {
     return new Promise((resolve, reject) => {
       models.House
-        .findOne({ where: { house_id: houseId } })
+        .findOne({ where: { houseId: houseId } })
         .then(function(obj) {
           if (obj) {
             obj
