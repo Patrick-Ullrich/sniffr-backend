@@ -62,7 +62,8 @@ module.exports = UserService = {
   },
   update: (userId, user) => {
     return new Promise((resolve, reject) => {
-      if (user.Phone && user.Address && user.Address) {
+      console.log(user);
+      if (user.Phone && user.Address && user.House) {
         phoneService
           .update(user.phoneId, user.Phone)
           .then(phone => {
