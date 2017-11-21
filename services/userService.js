@@ -62,7 +62,6 @@ module.exports = UserService = {
   },
   update: (userId, user) => {
     return new Promise((resolve, reject) => {
-      console.log(user);
       if (user.Phone && user.Address && user.House) {
         phoneService
           .update(user.phoneId, user.Phone)
@@ -126,9 +125,9 @@ module.exports = UserService = {
             {
               auth0Key: user.auth0Key,
               userTypeId: user.userTypeId,
-              addressId: address.addressId,
-              phoneId: phone.phoneId,
-              houseId: house.houseId,
+              addressId: user.addressId,
+              phoneId: user.phoneId,
+              houseId: user.houseId,
               firstName: user.firstName,
               lastName: user.lastName
             },
