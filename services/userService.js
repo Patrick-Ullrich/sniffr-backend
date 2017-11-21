@@ -62,62 +62,91 @@ module.exports = UserService = {
   },
   update: (userId, user) => {
     return new Promise((resolve, reject) => {
-      phoneService
-        .update(user.phoneId, user.Phone)
-        .then(phone => {
-          console.log("phone created: " + phone);
-          addressService
-            .update(user.addressId, user.Address)
-            .then(address => {
-              console.log("address created: " + address);
-              houseService
-                .update(user.houseId, user.House)
-                .then(house => {
-                  console.log("house created:" + house);
-                  models.User
-                    .update(
-                      {
-                        auth0Key: user.auth0Key,
-                        userTypeId: user.userTypeId,
-                        addressId: address.addressId,
-                        phoneId: phone.phoneId,
-                        houseId: house.houseId,
-                        firstName: user.firstName,
-                        lastName: user.lastName
-                      },
-                      {
-                        where: {
-                          user_id: userId
+      if (user.Phone && user.Address && user.Address) {
+        phoneService
+          .update(user.phoneId, user.Phone)
+          .then(phone => {
+            console.log("phone created: " + phone);
+            addressService
+              .update(user.addressId, user.Address)
+              .then(address => {
+                console.log("address created: " + address);
+                houseService
+                  .update(user.houseId, user.House)
+                  .then(house => {
+                    console.log("house created:" + house);
+                    models.User
+                      .update(
+                        {
+                          auth0Key: user.auth0Key,
+                          userTypeId: user.userTypeId,
+                          addressId: address.addressId,
+                          phoneId: phone.phoneId,
+                          houseId: house.houseId,
+                          firstName: user.firstName,
+                          lastName: user.lastName
+                        },
+                        {
+                          where: {
+                            user_id: userId
+                          }
                         }
-                      }
-                    )
-                    .then(updateCount => {
-                      console.log("User updated");
-                      resolve(UserService.findById(userId));
-                      resolve();
-                    })
-                    .catch(err => {
-                      console.log("user failed" + err);
-                      reject(err);
-                    });
-                })
-                .catch(err => {
-                  console.log("house failed" + err);
-                  addressService.delete(address.addressId);
-                  phoneService.delete(phone.deleteId);
-                  reject(err);
-                });
-            })
-            .catch(err => {
-              console.log("address failed" + err);
-              phoneService.delete(phone.deleteId);
-              reject(err);
-            });
-        })
-        .catch(err => {
-          console.log("phone failed" + err);
-          reject(err);
-        });
+                      )
+                      .then(updateCount => {
+                        console.log("User updated");
+                        resolve(UserService.findById(userId));
+                        resolve();
+                      })
+                      .catch(err => {
+                        console.log("user failed" + err);
+                        reject(err);
+                      });
+                  })
+                  .catch(err => {
+                    console.log("house failed" + err);
+                    addressService.delete(address.addressId);
+                    phoneService.delete(phone.deleteId);
+                    reject(err);
+                  });
+              })
+              .catch(err => {
+                console.log("address failed" + err);
+                phoneService.delete(phone.deleteId);
+                reject(err);
+              });
+          })
+          .catch(err => {
+            console.log("phone failed" + err);
+            reject(err);
+          });
+      } else {
+        models.User
+          .update(
+            {
+              auth0Key: user.auth0Key,
+              userTypeId: user.userTypeId,
+              addressId: address.addressId,
+              phoneId: phone.phoneId,
+              houseId: house.houseId,
+              firstName: user.firstName,
+              lastName: user.lastName
+            },
+            {
+              where: {
+                user_id: userId
+              }
+            }
+          )
+          .then(updateCount => {
+            console.log("User updated");
+            resolve(UserService.findById(userId));
+            resolve();
+          })
+          .catch(err => {
+            console.log("user failed" + err);
+            reject(err);
+          });
+      }
     });
   },
   delete: userId => {
